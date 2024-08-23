@@ -10,5 +10,8 @@ const parent = React.createElement("div", { id: "parent" }, [
   ]),
 ]);
 
+// Because of this complex structure there is something make our life easy
+// that is called the jsx
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent);

@@ -5,12 +5,14 @@ import ReactDOM from "react-dom/client";
 
 const Title =()=> <h1>Sangam Mundhe</h1>; //react element
 
+//react functional component
 // const HeadingComponent = () => {
-//   //react functional component
 //   return <h1>This Is Sangam</h1>;
 // };
 
 
+
+// composing two components into one called component composition
 const HeadingComponent2 = () =>(
   <div>
       <Title/>

@@ -1,4 +1,4 @@
-export const data = [
+const data = [
     {    
             id: "522738",
             name: "Home Plate by EatFit",
@@ -454,4 +454,7 @@ export const data = [
           
     },
     
-],
+];
+
+
+export default data;

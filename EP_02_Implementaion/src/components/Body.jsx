@@ -61,7 +61,7 @@ const Body = () => {
                             (rate) => rate.avgRating > 4.2
                         );
                         console.log(filterData);
-                        setRestaurentList(filterData);
+                        setSearchFilter(filterData);
                     }}
                     className="filter-btn"
                 >

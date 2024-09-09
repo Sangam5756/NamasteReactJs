@@ -1,6 +1,7 @@
 import RestaurentCard from "./RestaurentCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     // local state variable are super powerful variable
@@ -61,7 +62,7 @@ const Body = () => {
                             (rate) => rate.avgRating > 4.2
                         );
                         console.log(filterData);
-                        setSearchFilter(filterData);
+                         setSearchFilter(filterData);
                     }}
                     className="filter-btn"
                 >
@@ -71,7 +72,7 @@ const Body = () => {
 
             <div className="res-container">
                 {searchFilter.map((res, index) => (
-                    <RestaurentCard key={index} resData={res} />
+                   <Link to={`/restaurent/${res.id}`}> <RestaurentCard key={index} resData={res} /></Link>
                 ))}
             </div>
         </div>

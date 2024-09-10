@@ -6,36 +6,51 @@ class UserClass extends React.Component {
         super(props)
 
         this.state = {
-            count: 0
+            userInfo: {
+                name: "Sangam",
+                location: "Pune",
+                avatar_url:"Dummy Photo"
+
+            }
         }
-        console.log(" Child Constructor is Called")
 
     }
 
-    componentDidMount(){
-        console.log("Child Component Mount Successfull")
+    async componentDidMount() {
+
+        const response = await fetch("https://api.github.com/users/sangam5756");
+        const data = await response.json();
+
+        console.log(data)
+        this.setState({
+            userInfo: data
+        })
+    
+    
     }
 
+
+
+    componentWillUnmount(){
+        console.log("Component is UnMounted")
+    }
 
     render() {
-        const { count } = this.state;
-        console.log("Child Render is Called")
 
+        console.log(this.userInfo)
+        const {name , location,bio,html_url, avatar_url,public_repos} = this.state.userInfo;
         return (
             <div className="user-card">
-                <h2>Name : {this.props.name}</h2>
-                <h2>Count : {count}</h2>
-                <button onClick={() => {
-                    this.setState({
-                        count: this.state.count + 1,
-                    })
-                }}
-                >Increase Count</button>
-                <h3>Location: Pune</h3>
+                <img src={avatar_url} alt="" />
+                <h2>Name : {name}</h2>
+                <h3>Profession : {bio}</h3>
+                <h3>Location : {location}</h3>
                 <h4>Contact: @sangam5756</h4>
+                <h5>Total Repos: {public_repos}</h5>
+                <button ><a href={html_url} target="_blank">View Github</a></button>
             </div>
         )
-    }
+    } 
 }
 
 export default UserClass

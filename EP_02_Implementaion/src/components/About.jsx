@@ -8,16 +8,20 @@ class About extends Component {
 
     constructor(props) {
         super(props);
-        console.log("Parent Constructor");
     }
 
     componentDidMount() {
-        console.log("Parent Component Mount Successfull");
+        this.time = setInterval(()=>{
+            console.log("BhaiLog")
+        },1000)
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.time)
+
     }
 
     render() {
-
-        console.log("Parent Render")
 
         return (
             <div>

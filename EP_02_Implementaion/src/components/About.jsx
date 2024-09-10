@@ -11,13 +11,11 @@ class About extends Component {
     }
 
     componentDidMount() {
-        this.time = setInterval(()=>{
-            console.log("BhaiLog")
-        },1000)
+        
     }
 
     componentWillUnmount(){
-        clearInterval(this.time)
+        
 
     }
 
@@ -27,7 +25,8 @@ class About extends Component {
             <div>
                 <h1>About</h1>
                 <h2>This is React WebSeries</h2>
-                <UserClass name={"Sangam Mundhe (Functional class)"} />
+                {/* <UserClass name={"Sangam Mundhe (Functional class)"} /> */}
+                <User/>
 
             </div>
         )

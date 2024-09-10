@@ -72,7 +72,7 @@ const Body = () => {
 
             <div className="res-container">
                 {searchFilter.map((res, index) => (
-                   <Link to={`/restaurent/${res.id}`}> <RestaurentCard key={index} resData={res} /></Link>
+                   <Link key={res.id} to={`/restaurent/${res.id}`}> <RestaurentCard key={index} resData={res} /></Link>
                 ))}
             </div>
         </div>

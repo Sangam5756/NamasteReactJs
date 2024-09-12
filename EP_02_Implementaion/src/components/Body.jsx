@@ -37,7 +37,7 @@ const Body = () => {
 
     return (
         <div className="body">
-            <div className="filter">
+            <div className="flex gap-5 mb-5">
 
                 {/* search */}
                 <div className="search">
@@ -47,6 +47,7 @@ const Body = () => {
                         id="search"
                         value={searchText}
                         onChange={(e) =>setSearchText(e.target.value)}
+                        className="bg-slate-150 outline-none px-2 border border-black mx-2"
                     />
                     <button
                         onClick={
@@ -55,13 +56,14 @@ const Body = () => {
                                 setSearchFilter(filter)
                             }
                         }
-                        className="search-btn"
+                        className="bg-slate-200 py-1 rounded-md px-2 hover:bg-slate-400 duration-200"
                     >search</button>
                 </div>
 
 
                 {/* filter by rating */}
                 <button
+
                     onClick={() => {
                         const filterData = restaurentList.filter(
                             (rate) => rate.avgRating > 4.2
@@ -69,13 +71,13 @@ const Body = () => {
                         console.log(filterData);
                          setSearchFilter(filterData);
                     }}
-                    className="filter-btn"
+                    className="bg-slate-200 py-1  rounded-md px-2 hover:bg-slate-400 duration-200"
                 >
                     Sort By Top Restaurent
                 </button>
             </div>
 
-            <div className="res-container">
+            <div className="flex  flex-wrap mx-10 gap-5 ">
                 {searchFilter.map((res, index) => (
                    <Link key={res.id} to={`/restaurent/${res.id}`}> <RestaurentCard key={index} resData={res} /></Link>
                 ))}

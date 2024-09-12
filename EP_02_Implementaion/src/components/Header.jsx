@@ -8,19 +8,18 @@ const Header = () => {
 
   const onlineStatus =useOnlineStatus();
 
-  return (<div className="header">
-    <div className="logo-container">
+  return (
+  <div className="flex justify-between items-center bg-pink-100  py-2 mb-2">
       <img
-        className="logo"
+        className="w-32 "
         src={LOGO_URL}
         alt=""
       />
-    </div>
 
-    <div className="nav-items">
-      <ul>
+    <div className="">
+      <ul className="flex gap-5 mx-20">
         <li>
-        <Link to={"/grocery"}>Grocery</Link>
+        <Link className="" to={"/grocery"}>Grocery</Link>
         </li>
         <li>
           Status : {onlineStatus ? "online" :  "offline"}

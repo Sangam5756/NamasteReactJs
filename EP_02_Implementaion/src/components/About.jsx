@@ -10,22 +10,13 @@ class About extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        
-    }
-
-    componentWillUnmount(){
-        
-
-    }
-
     render() {
 
         return (
             <div>
                 <h1>About</h1>
                 <h2>This is React WebSeries</h2>
-                {/* <UserClass name={"Sangam Mundhe (Functional class)"} /> */}
+                <UserClass name={"Sangam Mundhe (Functional class)"} />
                 <User/>
 
             </div>

@@ -2,22 +2,7 @@ import { useEffect, useState } from "react";
 
 const User = ({ name }) => {
 
-
-
-    useEffect(() => {
-
-        // console.log("UseEffect is called");
-
-        const timer = setInterval(() => {
-            console.log("This is UseEffection Interval");
-        }, 1000);
-
-        return ()=>{
-            clearInterval(timer)
-        }
-
-    }, [])
-
+    
 
     const [count] = useState(0)
     return (

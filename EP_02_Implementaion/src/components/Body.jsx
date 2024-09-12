@@ -2,6 +2,7 @@ import RestaurentCard from "./RestaurentCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import {RestaurentList_URL} from "../utils/Constants"
 
 const Body = () => {
     // local state variable are super powerful variable
@@ -15,9 +16,9 @@ const Body = () => {
 
     const fetchData = async () => {
         const response = await fetch(
-            // "https://mocki.io/v1/ddb95bb0-fa9a-49a3-a3e2-caaa9039d743"
-            "https://mocki.io/v1/d8158884-05a5-435d-a13b-e2a94feeac45"
+            RestaurentList_URL
         );
+        
         const data = await response.json();
         setRestaurentList(data);
         setSearchFilter(data)
@@ -41,8 +42,6 @@ const Body = () => {
                         value={searchText}
                         onChange={(e) =>setSearchText(e.target.value)}
                     />
-
-
                     <button
                         onClick={
                             () => {

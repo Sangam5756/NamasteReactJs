@@ -15,24 +15,16 @@ class UserClass extends React.Component {
         }
 
     }
-
     async componentDidMount() {
 
         const response = await fetch("https://api.github.com/users/sangam5756");
         const data = await response.json();
 
-        console.log(data)
         this.setState({
             userInfo: data
         })
     
     
-    }
-
-
-
-    componentWillUnmount(){
-        console.log("Component is UnMounted")
     }
 
     render() {

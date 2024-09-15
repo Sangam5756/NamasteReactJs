@@ -19,7 +19,10 @@ const ItemList = ({ items }) => {
                       </div>
 
                        <div className="w-3/12 p-4">
-                       <img src={CDN_URL+item?.card?.info?.imageId} alt="" className="w-full rounded-sm" />
+                       <div className="absolute ">
+                       <button className="  bg-green-400   shadow-lg rounded-r-full   p-1 cursor-pointer  ">Add +</button>
+                       </div>
+                       <img src={CDN_URL+item?.card?.info?.imageId} alt="" className=" w-full rounded-sm" />
                        </div>
                     </div>
 

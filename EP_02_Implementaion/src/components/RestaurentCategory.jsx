@@ -8,6 +8,8 @@ const RestaurentCategory = ({ data,showItems,setShowIndex}) => {
 
     const handleClick = ()=>{
         setShowIndex(!showItems)
+        
+       
     }
   
 
@@ -22,9 +24,10 @@ const RestaurentCategory = ({ data,showItems,setShowIndex}) => {
                 {
                     showItems && <ItemList items={data?.itemCards} />
                 }
-
             </div>
             {/* Accordance */}
+
+               
         </div>
     )
 

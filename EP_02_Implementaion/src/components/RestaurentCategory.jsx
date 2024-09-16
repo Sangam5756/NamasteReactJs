@@ -3,13 +3,13 @@ import ItemList from "./ItemList";
 
 
 
-const RestaurentCategory = ({ data }) => {
+const RestaurentCategory = ({ data,showItems,setShowIndex}) => {
 
-    const [dropDown,setDropDown] = useState(false);
 
     const handleClick = ()=>{
-        setDropDown(!dropDown)
+        setShowIndex(!showItems)
     }
+  
 
     return (
         <div>
@@ -20,7 +20,7 @@ const RestaurentCategory = ({ data }) => {
                     <span className="text-2xl bg-gray-400 px-1 py-1 text-white rounded-lg">&#8595;</span>
                 </div>
                 {
-                    dropDown && <ItemList items={data?.itemCards} />
+                    showItems && <ItemList items={data?.itemCards} />
                 }
 
             </div>

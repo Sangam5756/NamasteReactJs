@@ -1,20 +1,21 @@
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
 import RestaurentCategory from "./RestaurentCategory";
+import { useState } from "react";
 
 
 const RestaurentMenu = () => {
   const { id } = useParams();
 
+  const [showIndex, setShowIndex] = useState(null);
+
+
   const resInfo = useRestaurentMenu(id);
 
+
+
   const data = resInfo?.data?.cards[2]?.card?.card?.info;
-  // console.log(data)
-
-
-  // console.log(resInfo)
   const filterData = resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(c => c.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-  console.log("filter", filterData)
 
 
 
@@ -29,9 +30,14 @@ const RestaurentMenu = () => {
         <p className="text-2xl font-semibold py-1">{data?.cuisines?.join(" , ")}</p>
       </div>
 
-      {filterData?.map((category) => {
+      {filterData?.map((category, index) => {
         return (
-          <RestaurentCategory key={data?.title} data={category?.card?.card} />
+          <RestaurentCategory
+            key={data?.title}
+            data={category?.card?.card}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={()=>setShowIndex(index)}
+          />
         )
       })}
     </div>

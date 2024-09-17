@@ -1,9 +1,10 @@
 import RestaurentCard, { withPromoted } from "./RestaurentCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import {RestaurentList_URL} from "../utils/Constants"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/context/UserContext";
 
 const Body = () => {
     // local state variable are super powerful variable
@@ -28,6 +29,7 @@ const Body = () => {
     const RestaurentwithPromotedCard =withPromoted(RestaurentCard);
 
     const onlineStatus = useOnlineStatus();
+    const {loggedInUser,setUserInfo} = useContext(UserContext)
 
 
     if(onlineStatus === false) return <h1>Looks like You are Offline Please check Your Internet</h1>
@@ -78,6 +80,14 @@ const Body = () => {
                 >
                     Sort By Top Restaurent
                 </button>
+
+                {/* change UserName*/}
+                <input type="text" 
+                    placeholder="Change UserName"
+                    value={loggedInUser}
+                    onChange={(e)=> setUserInfo(e.target.value)}
+                />
+
             </div>
 
             <div className="flex  flex-wrap ml-8 gap-5 ">

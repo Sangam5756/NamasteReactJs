@@ -1,4 +1,4 @@
-import React, { lazy,Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurentMenu from "./components/RestaurentMenu";
 import "./index.css"
+import UserContext from "./utils/context/UserContext";
 
 
 // dynamic loading
@@ -15,19 +16,35 @@ import "./index.css"
 // chunking
 // bundling
 
-const Grocery = lazy(()=> import("./components/Grocery"));
+const Grocery = lazy(() => import("./components/Grocery"));
 
 
 
 
-const AppLayout = () => (
-  <div className="app">
-    <Header />
-    <Outlet />
+const AppLayout = () => {
 
-  </div>
-);
+  const [userInfo, setUserInfo] = useState();
 
+  useEffect(() => {
+
+    const data = {
+      name: "Sangam Mundhe"
+    }
+
+    setUserInfo(data.name)
+
+  }, []);
+
+  return (
+    <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
+    <div className="app">
+      <Header />
+      <Outlet />
+
+    </div>
+    </UserContext.Provider>
+  );
+}
 
 
 
@@ -52,7 +69,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/grocery",
-        element: <Suspense fallback={<h1>Loading.....</h1>  }><Grocery /></Suspense>
+        element: <Suspense fallback={<h1>Loading.....</h1>}><Grocery /></Suspense>
       },
       {
         path: "/restaurent/:id",

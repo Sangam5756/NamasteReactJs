@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/Constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/context/UserContext";
+import { useSelector } from "react-redux";
 const Header = () => {
 
   const [btnName, setBtnName] = useState("Login");
@@ -11,7 +12,8 @@ const Header = () => {
 
   const  {loggedInUser} = useContext(UserContext)
 
-
+  const cart = useSelector(state => state.cart.items)
+  console.log(cart.length)
 
 
   return (
@@ -32,6 +34,9 @@ const Header = () => {
           </li>
           <li>
             <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/cart"}>Cart ({cart.length} items)</Link>
           </li>
           <li>
             <Link to={"/about"}>About us</Link>

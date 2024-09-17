@@ -16,3 +16,11 @@
 
 */
 
+# Redux
+- install react-redux @reduxjs/toolkit
+- build our store
+- Connect to our store
+- slice(cartSlice)
+- dispatch(action)
+- Selector(subscribe)
+

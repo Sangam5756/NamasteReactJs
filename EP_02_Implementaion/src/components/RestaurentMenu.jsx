@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
 import RestaurentCategory from "./RestaurentCategory";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const RestaurentMenu = () => {
@@ -9,8 +9,8 @@ const RestaurentMenu = () => {
 
   const [showIndex, setShowIndex] = useState(null);
 
-
   const resInfo = useRestaurentMenu(id);
+ 
 
 
 

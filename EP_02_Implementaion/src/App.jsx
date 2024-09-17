@@ -9,7 +9,9 @@ import Error from "./components/Error";
 import RestaurentMenu from "./components/RestaurentMenu";
 import "./index.css"
 import UserContext from "./utils/context/UserContext";
-
+import Cart from "./components/Cart";
+import { Provider } from "react-redux"
+import appStore from "./utils/redux/AppStore";
 
 // dynamic loading
 // on demand lading
@@ -36,13 +38,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
-    <div className="app">
-      <Header />
-      <Outlet />
-
-    </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userInfo, setUserInfo }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 }
 
@@ -62,6 +65,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
       },
       {
         path: "/contact",

@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
 import RestaurentCategory from "./RestaurentCategory";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 
 const RestaurentMenu = () => {
@@ -11,18 +10,13 @@ const RestaurentMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
 
   const resInfo = useRestaurentMenu(id);
-  
-  // const reduxdata  =useSelector(state => state.menu)/
-  const reduxdata = useSelector((state) => state?.menu);
-
-  console.log("reduxdata",reduxdata)
+ 
 
 
 
   const data = resInfo?.data?.cards[2]?.card?.card?.info;
-  
-  const filterData = reduxdata?.items?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(c => c.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-    console.log(filterData)
+  const filterData = resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(c => c.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+
 
 
 
@@ -34,12 +28,10 @@ const RestaurentMenu = () => {
         <h1 className="font-extrabold text-3xl mb-5">{data?.name}</h1>
         <p className="text-2xl font-semibold py-1">{data?.costForTwoMessage}</p>
         <p className="text-2xl font-semibold py-1">{data?.cuisines?.join(" , ")}</p>
-     
-     </div>
+      </div>
 
       {filterData?.map((category, index) => {
         return (
-          
           <RestaurentCategory
             key={data?.title}
             data={category?.card?.card}
@@ -51,7 +43,6 @@ const RestaurentMenu = () => {
           />
         )
       })}
-       
     </div>
   );
 };

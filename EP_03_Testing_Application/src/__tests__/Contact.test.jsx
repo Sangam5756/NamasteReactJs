@@ -17,6 +17,7 @@ test("does Button is loaded or not", () => {
     expect(button).toBeInTheDocument();
 });
 
+
 test("does inputName is loaded or not", () => {
     render(<Contact />);
     const InputName = screen.getByText("Submit");

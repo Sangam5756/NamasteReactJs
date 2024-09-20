@@ -1,9 +1,26 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Header from './Header'
+import { checkValidData } from '../utils/Validate';
 
 const Login = () => {
 
   const [signUp, setSignUp] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(null);
+  const email = useRef(null)
+  const password = useRef(null)
+  const name = useRef(null)
+
+  const handleButtonClick = (e) => {
+    // validate the form data
+    e.preventDefault()
+    console.log(email.current.value)
+    console.log(password.current.value)
+    const message = checkValidData(email.current.value, password.current.value,name.current.value)
+    console.log(message)
+    setErrorMessage(message)
+
+
+  }
 
   return (
     <div className="relative h-screen bg-cover bg-center"
@@ -17,6 +34,7 @@ const Login = () => {
 
           {signUp && (
             <input
+              ref={name}
               type="text"
               name="Name"
               placeholder="Full Name"
@@ -24,18 +42,21 @@ const Login = () => {
             />
           )}
           <input
+            ref={email}
             type="text"
             name="email"
             placeholder="Email Address"
             className="w-full p-3 mb-4 bg-gray-800 border border-gray-700 focus:outline-none rounded"
           />
           <input
+            ref={password}
             type="password"
             name="password"
             placeholder="Password"
             className="w-full p-3 mb-6 bg-gray-800 border border-gray-700 focus:outline-none rounded"
           />
-          <button className="w-full p-3 bg-red-600 hover:bg-red-700 text-white rounded">Sign In</button>
+          <p className='text-red-400'>{errorMessage}</p>
+          <button onClick={handleButtonClick} className="w-full p-3 bg-red-600 hover:bg-red-700 text-white rounded">{signUp ? "Sign In" : "Sign Up"}</button>
           {signUp && (<p className='cursor-pointer' onClick={() => setSignUp(false)}>dont have account ?  <span className='text-red-900'>sign Up</span></p>)}
           {!signUp && (<p onClick={() => setSignUp(true)} className='cursor-pointer'>Already Have Account <span className='text-red-800'>sign In</span></p>)}
         </form>

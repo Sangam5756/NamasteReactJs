@@ -8,6 +8,7 @@ const movieSlice = createSlice({
         trailerId: null,
         popularMovies: null,
         upcomingMovies:null,
+        showGptSearch:false,
     },
 
     reducers: {
@@ -22,6 +23,9 @@ const movieSlice = createSlice({
         },
         addUpcomingMovies:(state,action)=>{
             state.upcomingMovies=action.payload;
+        },
+        toggleGptSearched: (state,action) => {
+            state.showGptSearch = !state.showGptSearch;
         }
     }
 })

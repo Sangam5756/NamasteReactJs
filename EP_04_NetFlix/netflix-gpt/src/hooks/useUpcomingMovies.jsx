@@ -10,7 +10,6 @@ const useUpcomingMovies = () => {
     const response = await fetch("https://api.themoviedb.org/3/movie/upcoming", options);
 
     const data = await response.json()
-    console.log("popula",data.results)
     dispatch(addUpcomingMovies(data.results))
   }
 

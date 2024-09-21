@@ -5,7 +5,7 @@ import GptSearchBar from "./GptSearchBar";
 const GptSearch = () => {
   return (
     <div
-      className="h-[100vh]  bg-gradient-to-tl from-black  bg-cover bg-center "
+      className="h-screen bg-gradient-to-tl  bg-opacity-45 from-black bg-cover bg-center"
       style={{ backgroundImage: `url(${BANNER_URL})` }}
     >
       <GptSearchBar />
